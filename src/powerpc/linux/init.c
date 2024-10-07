@@ -520,14 +520,18 @@ void cpuinfo_powerpc_linux_init(void) {
 	      if (online_id != powerpc_linux_processors[processor].processor.linux_id)
 	      {
 	        if (powerpc_linux_processors[processor].core_leader_id == powerpc_linux_processors[processor].processor.linux_id) {
-	          powerpc_linux_processors[processor].core.processor_start = online_id;
+		  powerpc_linux_processors[processor].core_leader_id = online_id;
+		  powerpc_linux_processors[processor].core.processor_start = powerpc_linux_processors[processor].core_leader_id;
 		}
 		if (powerpc_linux_processors[processor].cluster_leader_id == powerpc_linux_processors[processor].processor.linux_id) {
-		  powerpc_linux_processors[processor].cluster.processor_start = online_id;
+		  powerpc_linux_processors[processor].cluster_leader_id = online_id;
+		  powerpc_linux_processors[processor].cluster.processor_start = powerpc_linux_processors[processor].cluster_leader_id;
 		}
 		if (powerpc_linux_processors[processor].package_leader_id == powerpc_linux_processors[processor].processor.linux_id) {
-		  powerpc_linux_processors[processor].package.processor_start = online_id;
+		  powerpc_linux_processors[processor].package_leader_id = online_id;
+		  powerpc_linux_processors[processor].package.processor_start = powerpc_linux_processors[processor].package_leader_id;
 		}
+      		powerpc_linux_processors[processor].processor.linux_id = online_id;
 	      }
 	      online_id++;
 	      }
