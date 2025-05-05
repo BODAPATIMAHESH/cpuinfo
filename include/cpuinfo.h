@@ -692,8 +692,6 @@ struct cpuinfo_core {
 #endif
 	/** Clock rate (non-Turbo) of the core, in Hz */
 	uint64_t frequency;
-
-	bool disabled;
 };
 
 struct cpuinfo_cluster {
